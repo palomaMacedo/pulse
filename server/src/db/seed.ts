@@ -1,18 +1,35 @@
-import {reset, seed} from 'drizzle-seed';
-import {db, sql } from './connection.ts';
-import {schema} from './schema/index.ts';
-import { rooms } from './schema/rooms.ts';
-import { desc, name } from 'drizzle-orm';
-
-await seed(db, schema).refine((f) => ({
-  rooms: {
-    count: 20,
-    columns: {
-      name: f.companyName(),
-      description: f.loremIpsum(),
-    },
-  },
-}));
+import { reset, seed } from 'drizzle-seed'
+import { db, sql } from './connection.ts'
+import { schema } from './schema/index.ts'
 
 
-console.log('Database has been reset and seeded successfully.');
+async function main() {
+  await reset(db, schema)
+
+  await seed(db, schema)
+    .refine((f) => ({
+      rooms: {
+        count: 20,
+        columns: {
+          name: f.companyName(),
+          description: f.loremIpsum(),
+        },
+        with: {
+           questions: [
+        {
+          count: 5,
+          weight: 1,
+        },
+      ],
+        },
+      },
+    }))
+
+
+  await sql.end()
+}
+
+main().catch((error) => {
+  console.error(error)
+  process.exit(1)
+})
