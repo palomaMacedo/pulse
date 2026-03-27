@@ -6,7 +6,7 @@ export const questions = pgTable('questions', {
   id: uuid().primaryKey().defaultRandom(),
   roomId: uuid().references(() => rooms.id, { onDelete: 'cascade' }).notNull(),
   question: text().notNull(),
-  description: text(),
+  answer: text(),
   createdAt: timestamp().defaultNow().notNull(),
 })
 

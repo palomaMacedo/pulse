@@ -1,5 +1,5 @@
+
 import { fastify } from 'fastify'
-import {sql} from './db/connection.ts'
 import {
   serializerCompiler,
   validatorCompiler,
@@ -8,8 +8,9 @@ import {
 
 import cors from '@fastify/cors'
 import { env } from './env.ts'
-import { get } from 'node:http'
 import { getRoomsRoute } from './http/routes/get-rooms.ts'
+import { createRoomRoute } from './http/routes/create-room.ts'
+import { getRoomQuestions } from './http/routes/get-room-questions.ts'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -23,7 +24,12 @@ app.setSerializerCompiler(serializerCompiler)
 app.get('/health', () => {
   return 'OK'
 })
-app.register(getRoomsRoute)
-app.listen({ port: env.PORT }).then(() => {
 
+app.register(getRoomsRoute)
+app.register(createRoomRoute)
+app.register(getRoomQuestions)
+
+
+app.listen({ port: env.PORT }).then(() => {
+  console.log('HTTP server running!')
 })
