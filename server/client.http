@@ -9,8 +9,8 @@ POST {{baseUrl}}/rooms
 Content-Type: application/json
 
 {
-  "name": "sala de teste",
-  "description": "Essa é uma sala de teste"
+  "name": "test room",
+  "description": "This is a test room"
 }
 
 ###
@@ -27,5 +27,5 @@ POST {{baseUrl}}/rooms/{{roomId}}/questions
 Content-Type: application/json
 
 {
-  "question": "qual teste 2?"
+  "question": "What is test 2?"
 }
