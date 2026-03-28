@@ -9,7 +9,7 @@ async function main() {
   await seed(db, schema)
     .refine((f) => ({
       rooms: {
-        count: 20,
+        count:5,
         columns: {
           name: f.companyName(),
           description: f.loremIpsum(),
@@ -17,7 +17,7 @@ async function main() {
         with: {
            questions: [
         {
-          count: 5,
+          count: 20,
           weight: 1,
         },
       ],
