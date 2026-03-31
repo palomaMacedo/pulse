@@ -43,6 +43,13 @@
       "when": 1774621990885,
       "tag": "0005_kind_fat_cobra",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1775001306784,
+      "tag": "0006_previous_scream",
+      "breakpoints": true
     }
   ]
 }
