@@ -1,8 +1,8 @@
 import { GoogleGenAI} from "@google/genai";
-
+import {env} from "../env.ts"
 
 const genai = new GoogleGenAI({
-  apiKey: process.env.GOOGLE_GENAI_API_KEY!,
+apiKey: env.GOOGLE_GENAI_API_KEY,
 })
 
 const model = 'gemini-2.5-flash'
@@ -26,4 +26,20 @@ export async function transcribeAudio(audioAsBase64: string, mimeType: string) {
     throw new Error('Não foi possivel converter o áudio.')
   }
   return response.text
+}
+
+export async function generateEmbeddings(text: string) {
+  const response = await genai.models.embedContent({
+    model: 'text-embedding-004',
+    contents: text,
+    config: {
+      taskType: 'RETRIEVAL_DOCUMENT',
+    }
+  })
+
+  if (!response.embeddings?.[0]?.values) {
+    throw new Error('Não foi possível gerar embeddings.')
+  }
+
+  return response.embeddings[0].values
 }
