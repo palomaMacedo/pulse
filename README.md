@@ -3,11 +3,11 @@
 # ⚡ Pulse
  
 **An AI-powered experiment — audio transcription, embeddings and semantic search.**
-**Um experimento com IA — transcrição de áudio, embeddings e busca semântica.**
+
  
 </div>
  
-## 🧪 About / Sobre
+## 🧪 About 
  
 Pulse was built as a study and test of AI integrations, exploring how to combine audio transcription, embeddings generation, and semantic search in a fullstack application.
  
@@ -40,14 +40,14 @@ pulse/
  
 **Backend:** TypeScript · Drizzle ORM · Docker · Gemini AI
  
-**Frontend:** TypeScript · React *(submodule / submódulo)*
+**Frontend:** TypeScript · React *(submodule)*
  
 ---
  
-## 🚀 Getting Started / Como rodar
+## 🚀 Getting Started 
  
 ```bash
-# Clone with submodules / Clone com submódulos
+# Clone with submodules 
 git clone --recurse-submodules https://github.com/palomaMacedo/pulse.git
  
 # Backend
@@ -66,7 +66,7 @@ npm run dev
  
  
 <div align="center">
- 💜 Built by Paloma Macedo (http://palomamacedo.dev)
+ 💜 Built by Paloma Macedo
  
 </div>
  
